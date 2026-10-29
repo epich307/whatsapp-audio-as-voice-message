@@ -1,0 +1,77 @@
+#wvfs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  color: inherit;
+  opacity: 0.85;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+#wvfs-btn:hover {
+  opacity: 1;
+  background-color: rgba(134, 150, 160, 0.15);
+}
+
+#wvfs-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+#wvfs-btn.wvfs-busy svg {
+  animation: wvfs-spin 1s linear infinite;
+}
+
+@keyframes wvfs-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#wvfs-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #202c33;
+  color: #e9edef;
+  padding: 10px 12px 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Segoe UI, Helvetica, Arial, sans-serif;
+  z-index: 999999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  max-width: 360px;
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+#wvfs-toast.wvfs-error {
+  background: #5b1f24;
+  color: #ffd9d9;
+}
+
+#wvfs-toast-text {
+  flex: 1;
+}
+
+#wvfs-toast-close {
+  flex: none;
+  background: transparent;
+  border: none;
+  color: inherit;
+  opacity: 0.7;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+#wvfs-toast-close:hover {
+  opacity: 1;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>WA Voice File Sender — Settings</title>
+<style>
+  body { font-family: Segoe UI, Helvetica, Arial, sans-serif; max-width: 560px; margin: 32px auto; color: #222; }
+  h1 { font-size: 18px; }
+  label { display: block; margin-top: 18px; font-weight: 600; }
+  p.hint { color: #666; font-size: 13px; margin: 4px 0 0; }
+  textarea { width: 100%; height: 160px; font-family: Consolas, monospace; font-size: 13px; margin-top: 6px; box-sizing: border-box; }
+  input[type="number"] { width: 80px; margin-top: 6px; }
+  .row { display: flex; align-items: center; gap: 8px; margin-top: 18px; }
+  .row label { margin-top: 0; }
+  button { margin-top: 24px; padding: 8px 18px; cursor: pointer; }
+  #status { margin-left: 12px; color: #2a8c4a; font-size: 13px; }
+</style>
+</head>
+<body>
+  <h1>WA Voice File Sender — Settings</h1>
+  <p>
+    These only matter for the optional <b>auto-press</b> convenience feature
+    (automatically pressing WhatsApp's mic button for you). If WhatsApp Web
+    changes its page layout and the button stops being found automatically,
+    update the selectors below — or just turn auto-press off and press the
+    mic button yourself, which always works regardless of these settings.
+  </p>
+
+  <div class="row">
+    <input type="checkbox" id="autoPress" />
+    <label for="autoPress" style="margin:0;">Try to auto-press the mic button</label>
+  </div>
+
+  <label for="timeout">Seconds to wait for the mic to be pressed before giving up</label>
+  <input type="number" id="timeout" min="5" max="300" />
+
+  <label for="selectors">Mic button CSS selectors (one per line, tried in order)</label>
+  <textarea id="selectors" spellcheck="false"></textarea>
+  <p class="hint">
+    To find the right selector if auto-press stops working: right-click WhatsApp's
+    mic button in the chat box → Inspect, note an attribute that uniquely
+    identifies it (e.g. <code>data-icon</code> or <code>aria-label</code>), and
+    add a selector like <code>span[data-icon="ptt"]</code> here.
+  </p>
+
+  <div class="row">
+    <input type="checkbox" id="autoPause" />
+    <label for="autoPause" style="margin:0;">Auto-pause the recording when the file finishes playing</label>
+  </div>
+  <p class="hint">
+    This pauses the in-progress recording — it never sends automatically.
+    You still press WhatsApp's send button yourself when ready.
+  </p>
+
+  <label for="pauseSelectors">Pause button CSS selectors (one per line, tried in order)</label>
+  <textarea id="pauseSelectors" spellcheck="false"></textarea>
+
+  <button id="save">Save</button>
+  <span id="status"></span>
+
+  <script src="options.js"></script>
+</body>
+</html>
